@@ -1,6 +1,7 @@
 import { pool } from "../config/database.js";
 
 const errResponse = (res,err) => {
+  console.log(err.message)
   res.status(400).json({error: err.message})
 }
 const getGifts = async(req,res) => {
@@ -21,9 +22,10 @@ const getGiftById = async(req,res) => {
 }
 
 const createGift = async(req,res) => {
+  // console.log('creating')
   try {
     const { name, pricepoint, audience, image, description, submittedby, submittedon } = req.body
-    
+    // console.log(name,pricepoint,audience,image,description,submittedby,submittedon)
     const result = await pool.query(`INSERT INTO gifts (name, pricepoint, audience, image, description, submittedby, submittedon)
     VALUES($1, $2, $3, $4, $5, $6, $7)
     RETURNING *`,

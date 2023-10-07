@@ -6,10 +6,9 @@ import giftsRouter from './routes/gifts.js'
 
 const app = express()
 
-
+app.use(express.json())
 app.use('/gifts', giftsRouter)
 app.use(cors())
-app.use(express.json())
 
 
 app.get('/', (req, res) => {

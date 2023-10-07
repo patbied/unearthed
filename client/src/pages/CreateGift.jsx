@@ -30,8 +30,21 @@ const CreateGift = () => {
         })
     }
     
-    const createGift = (event) => {
+    const createGift = async(event) => {
         event.preventDefault()
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(gift)
+           
+        }
+        // console.log(gift)
+        const response = await fetch('/gifts',options)
+        // console.log(response)
+        window.location = '/'
 
         
         
