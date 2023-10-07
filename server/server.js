@@ -9,6 +9,7 @@ const app = express()
 
 app.use('/gifts', giftsRouter)
 app.use(cors())
+app.use(express.json())
 
 
 app.get('/', (req, res) => {
