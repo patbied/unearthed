@@ -5,7 +5,8 @@ noGifts.textContent = 'No gifts.'
 const renderGifts = async() => {
     const res = await fetch('/gifts')
     const data = await res.json()
-    if (data){
+    console.log(data)
+    if (!data.error && data){
         data.map(gift => {
             const card = document.createElement('div')
             card.classList.add('card')
@@ -18,7 +19,7 @@ const renderGifts = async() => {
             name.textContent = gift.name
             bottomContainer.appendChild(name)
             const pricePoint = document.createElement('p')
-            pricePoint.textContent = 'Price: ' + gift.pricePoint
+            pricePoint.textContent = 'Price: ' + gift.pricepoint
             bottomContainer.appendChild(pricePoint)
             const link = document.createElement('a')
             link.textContent = 'Read More >'
